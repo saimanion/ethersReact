@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { getBalance } from "./main";
+import { useEffect, useState } from "react";
+import cls from './App.module.css'
 function App() {
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const balance = await getBalance();
+        console.log("balance", typeof balance)
+        // const rounded = parseInt(balance).toFixed(14);
+        // console.log("rounded", rounded)
+        setBalance(balance); // обновляем состояние после получения значения
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchBalance();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <div className={cls.balance}>Баланс вашего кошелька: {balance} ETH</div>
+      </div>
   );
 }
 
