@@ -5,3 +5,19 @@
     color: #e8e8e8;
     background-color: #282c34;
 }
+.sendBlock{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border: #282c34 2px solid;
+    /*width:800px;*/
+    border-radius: 15px;
+    color: #e8e8e8;
+    padding: 10px;
+}
+.to{
+    color: #000;
+}
+.input{
+    width: 400px;
+}
